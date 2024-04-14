@@ -92,7 +92,7 @@ def main():
     diet_plan = planMaker(breakfast_data, lunch_data, dinner_data)
 
     with open("diet_plan.txt", "w") as output_file:
-        output_file.write("Diet plan:\n")
+        output_file.write("Diet plan:\n\n")
         for i, week in enumerate(diet_plan, 1):
             output_file.write(f"Week {i}:\n")
             for day, meal in enumerate(week, 1):
