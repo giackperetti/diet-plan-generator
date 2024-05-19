@@ -133,12 +133,17 @@ def show_gui(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     root.title("Generatore Piano Dietetico")
     root.resizable(False, False)
 
-    title = tk.Label(root, text="Generatore Piano Dietetico")
+    title = tk.Label(
+        root,
+        text="Generatore Piano Dietetico",
+        font=("Arial", 16, "bold"),
+    )
     title.pack(padx=20, pady=20)
 
     button_txt = tk.Button(
         root,
         text="Salva il piano dietetico da 4 settimane come file di testo(.txt)",
+        font=("Arial", 16),
         command=lambda: save_plan_txt(breakfast_data, lunch_data, dinner_data),
     )
     button_txt.pack(padx=20, pady=20)
@@ -146,6 +151,7 @@ def show_gui(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     button_docx = tk.Button(
         root,
         text="Salva il piano dietetico da 4 settimane come file word(.docx)",
+        font=("Arial", 16),
         command=lambda: save_plan_docx(breakfast_data, lunch_data, dinner_data),
     )
     button_docx.pack(padx=10, pady=10)
