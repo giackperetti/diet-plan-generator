@@ -1,2 +1,2 @@
 @echo off
-python3 plan.py
+start /min pythonw plan.py
