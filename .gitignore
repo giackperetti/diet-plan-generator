@@ -1,3 +1,7 @@
 *.txt
 *.docx
 *.exe
+*.spec
+
+build/*
+dist/*
