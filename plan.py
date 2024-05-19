@@ -3,6 +3,7 @@ from typing import Dict
 from docx import Document
 import random
 import tkinter as tk
+from tkinter import messagebox
 
 
 def process_data(file_name):
@@ -100,7 +101,10 @@ def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
                 output_file.write(f"Cena: \n{meal[4]}\n\n")
             output_file.write("\n")
 
-    print("Diet plan saved to diet_plan.txt")
+    messagebox.showinfo(
+        "Salvataggio .txt completato",
+        "Il piano dietetico e' stato salvato nel file diet_plan.txt",
+    )
 
 
 def save_plan_docx(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
@@ -125,7 +129,10 @@ def save_plan_docx(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
             doc.add_paragraph(meal[4])
 
     doc.save("diet_plan.docx")
-    print("Diet plan saved to diet_plan.docx")
+    messagebox.showinfo(
+        "Salvataggio .docx completato",
+        "Il piano dietetico e' stato salvato nel file diet_plan.docx",
+    )
 
 
 def show_gui(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
