@@ -92,7 +92,7 @@ def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     file_path = os.path.join(desktop_path, "diet_plan.txt")
 
-    with open(file_path, "w") as output_file:
+    with open(file_path, "w", encoding="utf-8") as output_file:
         output_file.write("Piano Dietetico(4 settimane):\n\n")
         for i, week in enumerate(diet_plan, 1):
             output_file.write(f"Settimana {i}:\n")
