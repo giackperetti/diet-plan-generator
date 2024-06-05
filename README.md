@@ -14,8 +14,8 @@ To install Python, follow these steps:
 ### Usage
 To use the Generatore Piano Dietetico, follow these steps:
 
-1. **Run the Program**: Run the Python program using the command `python generatore_piano_dietetico.py`.
-2. **Provide Input Files**: Provide the three input files: breakfast, lunch, and dinner. These files should contain the meal options in the format `key: value`.
+1. **Run the Program**: Run the Python program using the `pianoDietetico.bat` script.
+2. **Provide Input Files**: Provide the three input files: breakfast, lunch, and dinner. These files should contain plain text.
 3. **Generate Meal Plan**: The program will generate a meal plan based on the provided data and save it in both text (.txt) and Word (.docx) formats.
 
 ### Features
