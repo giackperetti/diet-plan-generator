@@ -89,7 +89,8 @@ def generate_plan(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
 def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     diet_plan = generate_plan(breakfast_data, lunch_data, dinner_data)
 
-    file_path = "diet_plan.txt"
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    file_path = os.path.join(desktop_path, "diet_plan.txt")
 
     with open(file_path, "w") as output_file:
         output_file.write("Piano Dietetico(4 settimane):\n\n")
@@ -132,7 +133,8 @@ def save_plan_docx(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
             doc.add_heading("Cena:", level=4)
             doc.add_paragraph(meal[4])
 
-    file_path = "diet_plan.docx"
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    file_path = os.path.join(desktop_path, "diet_plan.docx")
     doc.save(file_path)
     abs_file_path = os.path.abspath(file_path)
     messagebox.showinfo(
