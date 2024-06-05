@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 from typing import Dict
 from docx import Document
 import random
@@ -88,7 +89,9 @@ def generate_plan(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
 def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     diet_plan = generate_plan(breakfast_data, lunch_data, dinner_data)
 
-    with open("diet_plan.txt", "w") as output_file:
+    file_path = "diet_plan.txt"
+
+    with open(file_path, "w") as output_file:
         output_file.write("Piano Dietetico(4 settimane):\n\n")
         for i, week in enumerate(diet_plan, 1):
             output_file.write(f"Settimana {i}:\n")
@@ -101,9 +104,10 @@ def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
                 output_file.write(f"Cena: \n{meal[4]}\n\n")
             output_file.write("\n")
 
+    abs_file_path = os.path.abspath(file_path)
     messagebox.showinfo(
         "Salvataggio .txt completato",
-        "Il piano dietetico e' stato salvato nel file diet_plan.txt",
+        f"Il piano dietetico e' stato salvato nel file {abs_file_path}",
     )
 
 
@@ -128,10 +132,12 @@ def save_plan_docx(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
             doc.add_heading("Cena:", level=4)
             doc.add_paragraph(meal[4])
 
-    doc.save("diet_plan.docx")
+    file_path = "diet_plan.docx"
+    doc.save(file_path)
+    abs_file_path = os.path.abspath(file_path)
     messagebox.showinfo(
         "Salvataggio .docx completato",
-        "Il piano dietetico e' stato salvato nel file diet_plan.docx",
+        f"Il piano dietetico e' stato salvato nel file {abs_file_path}",
     )
 
 
@@ -170,6 +176,8 @@ def main():
     breakfast = "breakfast.txt"
     lunch = "lunch.txt"
     dinner = "dinner.txt"
+
+    print()
     breakfast_data = process_data(breakfast)
     lunch_data = process_data(lunch)
     dinner_data = process_data(dinner)
