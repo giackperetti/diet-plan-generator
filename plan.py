@@ -177,7 +177,6 @@ def main():
     lunch = "lunch.txt"
     dinner = "dinner.txt"
 
-    print()
     breakfast_data = process_data(breakfast)
     lunch_data = process_data(lunch)
     dinner_data = process_data(dinner)
