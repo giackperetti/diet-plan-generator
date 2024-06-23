@@ -1,4 +1,4 @@
-# Generatore Piano Dietetico README.md File
+# Generatore Piano Dietetico
 
 ### Project Description
 The Generatore Piano Dietetico is a Python program designed to generate a personalized diet plan for four weeks. It takes input from three text files: breakfast, lunch, and dinner, and generates a meal plan based on the provided data. The program can save the plan in both text (.txt) and Word (.docx) formats.
