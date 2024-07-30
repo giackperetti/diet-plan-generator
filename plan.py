@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import os
-from typing import Dict
+from typing import Dict, List
 from docx import Document
 import random
 import tkinter as tk
@@ -86,9 +86,7 @@ def generate_plan(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     return diet_plan
 
 
-def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
-    diet_plan = generate_plan(breakfast_data, lunch_data, dinner_data)
-
+def save_plan_txt(diet_plan: List):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     file_path = os.path.join(desktop_path, "diet_plan.txt")
 
@@ -112,9 +110,7 @@ def save_plan_txt(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     )
 
 
-def save_plan_docx(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
-    diet_plan = generate_plan(breakfast_data, lunch_data, dinner_data)
-
+def save_plan_docx(diet_plan: List):
     doc = Document()
     doc.add_heading("Piano Dietetico (4 settimane)", level=1)
 
@@ -143,7 +139,7 @@ def save_plan_docx(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
     )
 
 
-def show_gui(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
+def show_gui(diet_plan: List):
     root = tk.Tk()
     root.title("Generatore Piano Dietetico")
     root.resizable(False, False)
@@ -159,7 +155,7 @@ def show_gui(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
         root,
         text="Salva il piano dietetico da 4 settimane come file di testo(.txt)",
         font=("Arial", 16),
-        command=lambda: save_plan_txt(breakfast_data, lunch_data, dinner_data),
+        command=lambda: save_plan_txt(diet_plan),
     )
     button_txt.pack(padx=20, pady=20)
 
@@ -167,7 +163,7 @@ def show_gui(breakfast_data: Dict, lunch_data: Dict, dinner_data: Dict):
         root,
         text="Salva il piano dietetico da 4 settimane come file word(.docx)",
         font=("Arial", 16),
-        command=lambda: save_plan_docx(breakfast_data, lunch_data, dinner_data),
+        command=lambda: save_plan_docx(diet_plan),
     )
     button_docx.pack(padx=10, pady=10)
 
@@ -183,7 +179,9 @@ def main():
     lunch_data = process_data(lunch)
     dinner_data = process_data(dinner)
 
-    show_gui(breakfast_data, lunch_data, dinner_data)
+    diet_plan = generate_plan(breakfast_data, lunch_data, dinner_data)
+    print([elem for row in diet_plan for elem in row])
+    show_gui(diet_plan)
 
 
 if __name__ == "__main__":
