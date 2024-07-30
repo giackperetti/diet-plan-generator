@@ -180,7 +180,6 @@ def main():
     dinner_data = process_data(dinner)
 
     diet_plan = generate_plan(breakfast_data, lunch_data, dinner_data)
-    print([elem for row in diet_plan for elem in row])
     show_gui(diet_plan)
 
 
